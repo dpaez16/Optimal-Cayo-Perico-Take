@@ -1,24 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kvd-cY-jaI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Optimal Cayo Perico Take-->
+        <scene sceneID="ztf-Dw-NiM">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="FtC-xp-fQh" customClass="UserInputTableViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="u1q-Kv-7jN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="userInputCell" id="Mj7-iK-mx4" customClass="UserInputTableViewCell" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mj7-iK-mx4" id="RCN-U6-Feg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Bm6-gL-aWV">
+                                            <rect key="frame" x="300" y="6" width="94" height="32"/>
+                                            <connections>
+                                                <action selector="changedStepperValue:" destination="Mj7-iK-mx4" eventType="valueChanged" id="rAv-RZ-1OI"/>
+                                            </connections>
+                                        </stepper>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpS-fF-cUe">
+                                            <rect key="frame" x="20" y="11.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hpS-fF-cUe" firstAttribute="leading" secondItem="RCN-U6-Feg" secondAttribute="leadingMargin" id="Gvt-aK-buc"/>
+                                        <constraint firstItem="hpS-fF-cUe" firstAttribute="centerY" secondItem="RCN-U6-Feg" secondAttribute="centerY" id="TqH-pw-XBL"/>
+                                        <constraint firstItem="Bm6-gL-aWV" firstAttribute="centerY" secondItem="RCN-U6-Feg" secondAttribute="centerY" id="Uvd-tA-wCQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bm6-gL-aWV" secondAttribute="trailing" constant="20" id="ZWD-1H-n0M"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="stepper" destination="Bm6-gL-aWV" id="5Zn-XA-owg"/>
+                                    <outlet property="userInputLabel" destination="hpS-fF-cUe" id="buJ-jy-He2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FtC-xp-fQh" id="1pA-Ok-Q4E"/>
+                            <outlet property="delegate" destination="FtC-xp-fQh" id="ed6-Sr-5Wu"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Calculate Optimal Loot" width="451" id="IRG-jM-LRj">
+                            <connections>
+                                <segue destination="jiC-52-JcX" kind="show" identifier="calculateOptimalLootSegue" id="zik-3g-nfu"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Optimal Cayo Perico Take" id="z7d-2A-fHr">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Hbl-qJ-sC3"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jcQ-uX-OzH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1379" y="210"/>
+        </scene>
+        <!--Calculation View Controller-->
+        <scene sceneID="WtB-MM-k4P">
+            <objects>
+                <viewController id="jiC-52-JcX" customClass="CalculationViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bgd-Um-lPV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4uj-kt-Nwy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yLp-Qn-UDx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8Y-Pc-JQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="218"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nT4-v2-1rP">
+            <objects>
+                <navigationController id="Kvd-cY-jaI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Mr-He-GfA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="FtC-xp-fQh" kind="relationship" relationship="rootViewController" id="tAM-d5-iLq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mVo-uz-Jng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="210"/>
         </scene>
     </scenes>
 </document>

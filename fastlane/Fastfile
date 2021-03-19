@@ -1,0 +1,34 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+setup_travis
+
+default_platform(:ios)
+
+SCHEME       = "Optimal-Cayo-Perico-Take"
+DERIVED_DATA = "./derivedData" 
+DEVICE       = "iPhone 8"
+
+platform :ios do
+  desc "Runs unit tests and UI tests"
+  lane :tests do
+    run_tests(scheme: SCHEME, derived_data_path: DERIVED_DATA, device: DEVICE)
+  end
+
+  desc "Uploads beta app to testflight"
+  lane :beta do
+    build_app(scheme: SCHEME)
+    upload_to_testflight
+  end
+end

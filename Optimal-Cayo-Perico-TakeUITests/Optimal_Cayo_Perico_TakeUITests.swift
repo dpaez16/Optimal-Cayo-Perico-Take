@@ -10,34 +10,28 @@ import XCTest
 
 class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    override func setUp() {
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
     func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+        
+        let tablesQuery = XCUIApplication().tables
+        XCTAssertFalse(app.toolbars["Toolbar"].exists)
+        
+        for stepperType in StepperTypes.allCases {
+            let originalQuantity = stepperType == StepperTypes.Players ? 1 : 0
+            let idString = "\(stepperType.rawValue): \(originalQuantity)"
+            
+            tablesQuery.cells.containing(.staticText, identifier: idString).buttons["Increment"].tap()
+            XCTAssert(tablesQuery.cells.containing(.staticText, identifier: idString).count == 0)
+            XCTAssert(app.toolbars["Toolbar"].exists)
         }
+        
+        XCTAssert(app.toolbars["Toolbar"].exists)
+        app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
+        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationView"].buttons["Back"].tap()
     }
 }

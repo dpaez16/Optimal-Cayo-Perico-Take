@@ -9,12 +9,19 @@
 /* Begin PBXBuildFile section */
 		7178EE942605281000BAE607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE932605281000BAE607 /* AppDelegate.swift */; };
 		7178EE962605281000BAE607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE952605281000BAE607 /* SceneDelegate.swift */; };
-		7178EE982605281000BAE607 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE972605281000BAE607 /* ViewController.swift */; };
 		7178EE9B2605281000BAE607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE992605281000BAE607 /* Main.storyboard */; };
 		7178EE9D2605281200BAE607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE9C2605281200BAE607 /* Assets.xcassets */; };
 		7178EEA02605281200BAE607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE9E2605281200BAE607 /* LaunchScreen.storyboard */; };
 		7178EEAB2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEAA2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift */; };
 		7178EEB62605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEB52605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift */; };
+		7178EEC42605285C00BAE607 /* OptimalLootUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC32605285C00BAE607 /* OptimalLootUtils.swift */; };
+		7178EEC52605285C00BAE607 /* OptimalLootUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC32605285C00BAE607 /* OptimalLootUtils.swift */; };
+		7178EEC72605287E00BAE607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC62605287E00BAE607 /* Constants.swift */; };
+		7178EEC82605287E00BAE607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC62605287E00BAE607 /* Constants.swift */; };
+		7178EEC92605287E00BAE607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC62605287E00BAE607 /* Constants.swift */; };
+		7178EECB260531B600BAE607 /* UserInputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECA260531B600BAE607 /* UserInputTableViewController.swift */; };
+		7178EECE260532A600BAE607 /* UserInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */; };
+		7178EED026055C0F00BAE607 /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECF26055C0F00BAE607 /* CalculationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +45,6 @@
 		7178EE902605281000BAE607 /* Optimal-Cayo-Perico-Take.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Optimal-Cayo-Perico-Take.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7178EE932605281000BAE607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7178EE952605281000BAE607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7178EE972605281000BAE607 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7178EE9A2605281000BAE607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7178EE9C2605281200BAE607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7178EE9F2605281200BAE607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,11 @@
 		7178EEB12605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Optimal-Cayo-Perico-TakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7178EEB52605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optimal_Cayo_Perico_TakeUITests.swift; sourceTree = "<group>"; };
 		7178EEB72605281200BAE607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7178EEC32605285C00BAE607 /* OptimalLootUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalLootUtils.swift; sourceTree = "<group>"; };
+		7178EEC62605287E00BAE607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7178EECA260531B600BAE607 /* UserInputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTableViewController.swift; sourceTree = "<group>"; };
+		7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTableViewCell.swift; sourceTree = "<group>"; };
+		7178EECF26055C0F00BAE607 /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +110,17 @@
 		7178EE922605281000BAE607 /* Optimal-Cayo-Perico-Take */ = {
 			isa = PBXGroup;
 			children = (
+				7178EEC62605287E00BAE607 /* Constants.swift */,
 				7178EE932605281000BAE607 /* AppDelegate.swift */,
 				7178EE952605281000BAE607 /* SceneDelegate.swift */,
-				7178EE972605281000BAE607 /* ViewController.swift */,
 				7178EE992605281000BAE607 /* Main.storyboard */,
 				7178EE9C2605281200BAE607 /* Assets.xcassets */,
 				7178EE9E2605281200BAE607 /* LaunchScreen.storyboard */,
 				7178EEA12605281200BAE607 /* Info.plist */,
+				7178EEC32605285C00BAE607 /* OptimalLootUtils.swift */,
+				7178EECA260531B600BAE607 /* UserInputTableViewController.swift */,
+				7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */,
+				7178EECF26055C0F00BAE607 /* CalculationViewController.swift */,
 			);
 			path = "Optimal-Cayo-Perico-Take";
 			sourceTree = "<group>";
@@ -199,7 +214,6 @@
 					};
 					7178EEA52605281200BAE607 = {
 						CreatedOnToolsVersion = 11.5;
-						TestTargetID = 7178EE8F2605281000BAE607;
 					};
 					7178EEB02605281200BAE607 = {
 						CreatedOnToolsVersion = 11.5;
@@ -259,9 +273,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7178EE982605281000BAE607 /* ViewController.swift in Sources */,
+				7178EEC72605287E00BAE607 /* Constants.swift in Sources */,
+				7178EECE260532A600BAE607 /* UserInputTableViewCell.swift in Sources */,
 				7178EE942605281000BAE607 /* AppDelegate.swift in Sources */,
+				7178EECB260531B600BAE607 /* UserInputTableViewController.swift in Sources */,
+				7178EEC42605285C00BAE607 /* OptimalLootUtils.swift in Sources */,
 				7178EE962605281000BAE607 /* SceneDelegate.swift in Sources */,
+				7178EED026055C0F00BAE607 /* CalculationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +287,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7178EEC52605285C00BAE607 /* OptimalLootUtils.swift in Sources */,
 				7178EEAB2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift in Sources */,
+				7178EEC82605287E00BAE607 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7178EEB62605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift in Sources */,
+				7178EEC92605287E00BAE607 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +491,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T72TD2GA49;
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeTests/Info.plist";
@@ -484,7 +504,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Optimal-Cayo-Perico-Take.app/Optimal-Cayo-Perico-Take";
 			};
 			name = Debug;
 		};
@@ -492,7 +511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T72TD2GA49;
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeTests/Info.plist";
@@ -506,7 +524,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Optimal-Cayo-Perico-Take.app/Optimal-Cayo-Perico-Take";
 			};
 			name = Release;
 		};

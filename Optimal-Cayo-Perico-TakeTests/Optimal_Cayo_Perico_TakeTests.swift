@@ -7,28 +7,146 @@
 //
 
 import XCTest
-@testable import Optimal_Cayo_Perico_Take
+//@testable import Optimal_Cayo_Perico_Take
 
 class Optimal_Cayo_Perico_TakeTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    private let ACCURACY = 0.00001
+    
+    func testWeightMethods() {
+        let capacity: Double = 2
+        let lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 3,
+            SecondaryLootTypes.Art: 0,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        let weightsObtained = OptimalLootUtils.getWeightsObtained(lootGrabbed: optimalLoot)
+        let totalWeightObtained = OptimalLootUtils.getTotalWeight(lootGrabbed: optimalLoot)
+        
+        XCTAssertEqual(optimalLoot[SecondaryLootTypes.Gold]!, 3)
+        XCTAssertEqual(weightsObtained[SecondaryLootTypes.Gold], 2)
+        XCTAssertEqual(totalWeightObtained, capacity)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testValueMethods() {
+        let capacity: Double = 2
+        let lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 3,
+            SecondaryLootTypes.Art: 0,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        let valuesObtained = OptimalLootUtils.getValuesObtained(lootGrabbed: optimalLoot)
+        let totalValuesObtained = OptimalLootUtils.getTotalValues(lootGrabbed: optimalLoot)
+        let actualTotalValues = (3 * SecondaryLootTypes.Gold.getLootParams().0.0, 3 * SecondaryLootTypes.Gold.getLootParams().0.1)
+        
+        XCTAssertEqual(optimalLoot[SecondaryLootTypes.Gold]!, 3)
+        XCTAssertEqual(valuesObtained[SecondaryLootTypes.Gold]!.0, actualTotalValues.0)
+        XCTAssertEqual(valuesObtained[SecondaryLootTypes.Gold]!.1, actualTotalValues.1)
+        XCTAssertEqual(totalValuesObtained.0, actualTotalValues.0)
+        XCTAssertEqual(totalValuesObtained.1, actualTotalValues.1)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testOptimalLootGold() {
+        var capacity: Double = 1
+        var lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 2,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 1,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 1
+        ]
+        
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold {
+                XCTAssertTrue(optimalLoot[lootType]! > 0)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+        
+        capacity = 2
+        lootCounts = [
+            SecondaryLootTypes.Gold: 3,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 2,
+            SecondaryLootTypes.Coke: 1,
+            SecondaryLootTypes.Weed: 1
+        ]
+        
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold {
+                XCTAssertEqual(optimalLoot[lootType]!, 3, accuracy: ACCURACY)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
         }
     }
-
+    
+    func testOptimalLootGoldCoke() {
+        let capacity: Double = 1
+        let lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 1,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 1,
+            SecondaryLootTypes.Weed: 1
+        ]
+        
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold || lootType == .Coke {
+                XCTAssertTrue(optimalLoot[lootType]! > 0)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+    }
+    
+    func testOptimalLootArt() {
+        var capacity: Double = 1
+        var lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 1,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 1
+        ]
+        
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold || lootType == .Weed {
+                XCTAssertTrue(optimalLoot[lootType]! > 0)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+        
+        capacity = 1
+        lootCounts = [
+            SecondaryLootTypes.Gold: 0,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 2,
+            SecondaryLootTypes.Coke: 1,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Art || lootType == .Coke {
+                XCTAssertEqual(optimalLoot[lootType]!, 1, accuracy: ACCURACY)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+    }
 }
