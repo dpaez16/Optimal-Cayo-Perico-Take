@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7178EE942605281000BAE607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE932605281000BAE607 /* AppDelegate.swift */; };
+		7178EE962605281000BAE607 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE952605281000BAE607 /* SceneDelegate.swift */; };
+		7178EE982605281000BAE607 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EE972605281000BAE607 /* ViewController.swift */; };
+		7178EE9B2605281000BAE607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE992605281000BAE607 /* Main.storyboard */; };
+		7178EE9D2605281200BAE607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE9C2605281200BAE607 /* Assets.xcassets */; };
+		7178EEA02605281200BAE607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7178EE9E2605281200BAE607 /* LaunchScreen.storyboard */; };
+		7178EEAB2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEAA2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift */; };
+		7178EEB62605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEB52605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7178EEA72605281200BAE607 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7178EE882605281000BAE607 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7178EE8F2605281000BAE607;
+			remoteInfo = "Optimal-Cayo-Perico-Take";
+		};
+		7178EEB22605281200BAE607 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7178EE882605281000BAE607 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7178EE8F2605281000BAE607;
+			remoteInfo = "Optimal-Cayo-Perico-Take";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7178EE902605281000BAE607 /* Optimal-Cayo-Perico-Take.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Optimal-Cayo-Perico-Take.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7178EE932605281000BAE607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7178EE952605281000BAE607 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7178EE972605281000BAE607 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7178EE9A2605281000BAE607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7178EE9C2605281200BAE607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7178EE9F2605281200BAE607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7178EEA12605281200BAE607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7178EEA62605281200BAE607 /* Optimal-Cayo-Perico-TakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Optimal-Cayo-Perico-TakeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7178EEAA2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optimal_Cayo_Perico_TakeTests.swift; sourceTree = "<group>"; };
+		7178EEAC2605281200BAE607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7178EEB12605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Optimal-Cayo-Perico-TakeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7178EEB52605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optimal_Cayo_Perico_TakeUITests.swift; sourceTree = "<group>"; };
+		7178EEB72605281200BAE607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7178EE8D2605281000BAE607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEA32605281200BAE607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEAE2605281200BAE607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7178EE872605281000BAE607 = {
+			isa = PBXGroup;
+			children = (
+				7178EE922605281000BAE607 /* Optimal-Cayo-Perico-Take */,
+				7178EEA92605281200BAE607 /* Optimal-Cayo-Perico-TakeTests */,
+				7178EEB42605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests */,
+				7178EE912605281000BAE607 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7178EE912605281000BAE607 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7178EE902605281000BAE607 /* Optimal-Cayo-Perico-Take.app */,
+				7178EEA62605281200BAE607 /* Optimal-Cayo-Perico-TakeTests.xctest */,
+				7178EEB12605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7178EE922605281000BAE607 /* Optimal-Cayo-Perico-Take */ = {
+			isa = PBXGroup;
+			children = (
+				7178EE932605281000BAE607 /* AppDelegate.swift */,
+				7178EE952605281000BAE607 /* SceneDelegate.swift */,
+				7178EE972605281000BAE607 /* ViewController.swift */,
+				7178EE992605281000BAE607 /* Main.storyboard */,
+				7178EE9C2605281200BAE607 /* Assets.xcassets */,
+				7178EE9E2605281200BAE607 /* LaunchScreen.storyboard */,
+				7178EEA12605281200BAE607 /* Info.plist */,
+			);
+			path = "Optimal-Cayo-Perico-Take";
+			sourceTree = "<group>";
+		};
+		7178EEA92605281200BAE607 /* Optimal-Cayo-Perico-TakeTests */ = {
+			isa = PBXGroup;
+			children = (
+				7178EEAA2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift */,
+				7178EEAC2605281200BAE607 /* Info.plist */,
+			);
+			path = "Optimal-Cayo-Perico-TakeTests";
+			sourceTree = "<group>";
+		};
+		7178EEB42605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7178EEB52605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift */,
+				7178EEB72605281200BAE607 /* Info.plist */,
+			);
+			path = "Optimal-Cayo-Perico-TakeUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7178EE8F2605281000BAE607 /* Optimal-Cayo-Perico-Take */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7178EEBA2605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-Take" */;
+			buildPhases = (
+				7178EE8C2605281000BAE607 /* Sources */,
+				7178EE8D2605281000BAE607 /* Frameworks */,
+				7178EE8E2605281000BAE607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Optimal-Cayo-Perico-Take";
+			productName = "Optimal-Cayo-Perico-Take";
+			productReference = 7178EE902605281000BAE607 /* Optimal-Cayo-Perico-Take.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7178EEA52605281200BAE607 /* Optimal-Cayo-Perico-TakeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7178EEBD2605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-TakeTests" */;
+			buildPhases = (
+				7178EEA22605281200BAE607 /* Sources */,
+				7178EEA32605281200BAE607 /* Frameworks */,
+				7178EEA42605281200BAE607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7178EEA82605281200BAE607 /* PBXTargetDependency */,
+			);
+			name = "Optimal-Cayo-Perico-TakeTests";
+			productName = "Optimal-Cayo-Perico-TakeTests";
+			productReference = 7178EEA62605281200BAE607 /* Optimal-Cayo-Perico-TakeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7178EEB02605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7178EEC02605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-TakeUITests" */;
+			buildPhases = (
+				7178EEAD2605281200BAE607 /* Sources */,
+				7178EEAE2605281200BAE607 /* Frameworks */,
+				7178EEAF2605281200BAE607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7178EEB32605281200BAE607 /* PBXTargetDependency */,
+			);
+			name = "Optimal-Cayo-Perico-TakeUITests";
+			productName = "Optimal-Cayo-Perico-TakeUITests";
+			productReference = 7178EEB12605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7178EE882605281000BAE607 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Danny Paez";
+				TargetAttributes = {
+					7178EE8F2605281000BAE607 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					7178EEA52605281200BAE607 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 7178EE8F2605281000BAE607;
+					};
+					7178EEB02605281200BAE607 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 7178EE8F2605281000BAE607;
+					};
+				};
+			};
+			buildConfigurationList = 7178EE8B2605281000BAE607 /* Build configuration list for PBXProject "Optimal-Cayo-Perico-Take" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7178EE872605281000BAE607;
+			productRefGroup = 7178EE912605281000BAE607 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7178EE8F2605281000BAE607 /* Optimal-Cayo-Perico-Take */,
+				7178EEA52605281200BAE607 /* Optimal-Cayo-Perico-TakeTests */,
+				7178EEB02605281200BAE607 /* Optimal-Cayo-Perico-TakeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7178EE8E2605281000BAE607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7178EEA02605281200BAE607 /* LaunchScreen.storyboard in Resources */,
+				7178EE9D2605281200BAE607 /* Assets.xcassets in Resources */,
+				7178EE9B2605281000BAE607 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEA42605281200BAE607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEAF2605281200BAE607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7178EE8C2605281000BAE607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7178EE982605281000BAE607 /* ViewController.swift in Sources */,
+				7178EE942605281000BAE607 /* AppDelegate.swift in Sources */,
+				7178EE962605281000BAE607 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEA22605281200BAE607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7178EEAB2605281200BAE607 /* Optimal_Cayo_Perico_TakeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7178EEAD2605281200BAE607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7178EEB62605281200BAE607 /* Optimal_Cayo_Perico_TakeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7178EEA82605281200BAE607 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7178EE8F2605281000BAE607 /* Optimal-Cayo-Perico-Take */;
+			targetProxy = 7178EEA72605281200BAE607 /* PBXContainerItemProxy */;
+		};
+		7178EEB32605281200BAE607 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7178EE8F2605281000BAE607 /* Optimal-Cayo-Perico-Take */;
+			targetProxy = 7178EEB22605281200BAE607 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7178EE992605281000BAE607 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7178EE9A2605281000BAE607 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7178EE9E2605281200BAE607 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7178EE9F2605281200BAE607 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7178EEB82605281200BAE607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7178EEB92605281200BAE607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7178EEBB2605281200BAE607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-Take/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-Take";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7178EEBC2605281200BAE607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-Take/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-Take";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7178EEBE2605281200BAE607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Optimal-Cayo-Perico-Take.app/Optimal-Cayo-Perico-Take";
+			};
+			name = Debug;
+		};
+		7178EEBF2605281200BAE607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Optimal-Cayo-Perico-Take.app/Optimal-Cayo-Perico-Take";
+			};
+			name = Release;
+		};
+		7178EEC12605281200BAE607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Optimal-Cayo-Perico-Take";
+			};
+			name = Debug;
+		};
+		7178EEC22605281200BAE607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T72TD2GA49;
+				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Optimal-Cayo-Perico-Take";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7178EE8B2605281000BAE607 /* Build configuration list for PBXProject "Optimal-Cayo-Perico-Take" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7178EEB82605281200BAE607 /* Debug */,
+				7178EEB92605281200BAE607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7178EEBA2605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-Take" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7178EEBB2605281200BAE607 /* Debug */,
+				7178EEBC2605281200BAE607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7178EEBD2605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-TakeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7178EEBE2605281200BAE607 /* Debug */,
+				7178EEBF2605281200BAE607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7178EEC02605281200BAE607 /* Build configuration list for PBXNativeTarget "Optimal-Cayo-Perico-TakeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7178EEC12605281200BAE607 /* Debug */,
+				7178EEC22605281200BAE607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7178EE882605281000BAE607 /* Project object */;
+}
