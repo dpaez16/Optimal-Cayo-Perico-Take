@@ -89,6 +89,7 @@ iOSInjectionProject/
 
 # codecov
 *.coverage.txt
+output/
 
 .bundle
 

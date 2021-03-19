@@ -19,11 +19,21 @@ default_platform(:ios)
 SCHEME       = "Optimal-Cayo-Perico-Take"
 DERIVED_DATA = "./derivedData" 
 DEVICE       = "iPhone 8"
+PROJECT      = "Optimal-Cayo-Perico-Take.xcodeproj"
+
+SOURCE_DIR   = "Optimal-Cayo-Perico-Take"
+OUTPUT_DIR   = "./output/cobertura"
+IGNORE_DIR   = ["Optimal-Cayo-Perico-TakeTests", "Optimal-Cayo-Perico-TakeUITests", "**/*SceneDelegate*", "**/*AppDelegate*"]
 
 platform :ios do
   desc "Runs unit tests and UI tests"
   lane :tests do
     run_tests(scheme: SCHEME, derived_data_path: DERIVED_DATA, device: DEVICE)
+  end
+
+  desc "Code coverage"
+  lane :coverage do
+    slather(scheme: SCHEME, proj: PROJECT, source_directory: SOURCE_DIR, ignore: IGNORE_DIR, cobertura_xml: true, output_directory: OUTPUT_DIR)
   end
 
   desc "Uploads beta app to testflight"
