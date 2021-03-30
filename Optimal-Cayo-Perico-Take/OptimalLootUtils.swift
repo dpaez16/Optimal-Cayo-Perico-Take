@@ -87,7 +87,7 @@ class OptimalLootUtils {
         return optimalLoot
     }
     
-    static func getOptimalLoot(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
+    private static func getOptimalNumArtItems(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> Double {
         let maxNumArtItems = Int(lootCounts[.Art]!)
         let artWeight = SecondaryLootTypes.Art.getWeight()
         let artValues = (SecondaryLootTypes.Art.getMinValue(), SecondaryLootTypes.Art.getMaxValue())
@@ -109,9 +109,18 @@ class OptimalLootUtils {
         let numArtItems = indices.max { choices[$0].1 < choices[$1].1 }
         let numArtItemsDbl = Double(numArtItems!)
         
-        let alteredCapacity = capacity - artWeight * numArtItemsDbl
+        return numArtItemsDbl
+    }
+    
+    static func getOptimalLoot(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
+        let numArtItems = getOptimalNumArtItems(capacity: capacity, lootCounts: lootCounts)
+        let artWeight = SecondaryLootTypes.Art.getWeight()
+        var lootCountsCopy = lootCounts
+        lootCountsCopy[.Art] = 0
+        
+        let alteredCapacity = capacity - artWeight * numArtItems
         var optimalLoot = getOptimalLootHelper(capacity: alteredCapacity, lootCounts: lootCountsCopy)
-        optimalLoot[.Art] = numArtItemsDbl
+        optimalLoot[.Art] = numArtItems
         
         return optimalLoot
     }
