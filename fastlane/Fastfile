@@ -41,7 +41,7 @@ platform :ios do
       ignore: IGNORE,
       cobertura_xml: true,
       output_directory: OUTPUT_DIR,
-      travis: true
+      travis: is_ci
     )
   end
 

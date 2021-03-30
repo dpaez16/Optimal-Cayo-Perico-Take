@@ -44,13 +44,35 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
         let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
         let valuesObtained = OptimalLootUtils.getValuesObtained(lootGrabbed: optimalLoot)
         let totalValuesObtained = OptimalLootUtils.getTotalValues(lootGrabbed: optimalLoot)
-        let actualTotalValues = (3 * SecondaryLootTypes.Gold.getLootParams().0.0, 3 * SecondaryLootTypes.Gold.getLootParams().0.1)
+        let actualTotalValues = (3 * SecondaryLootTypes.Gold.getMinValue(), 3 * SecondaryLootTypes.Gold.getMaxValue())
         
         XCTAssertEqual(optimalLoot[SecondaryLootTypes.Gold]!, 3)
         XCTAssertEqual(valuesObtained[SecondaryLootTypes.Gold]!.0, actualTotalValues.0)
         XCTAssertEqual(valuesObtained[SecondaryLootTypes.Gold]!.1, actualTotalValues.1)
         XCTAssertEqual(totalValuesObtained.0, actualTotalValues.0)
         XCTAssertEqual(totalValuesObtained.1, actualTotalValues.1)
+    }
+    
+    func testOptimalLootGoldArt() {
+        let capacity: Double = 1
+        let lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 1,
+            SecondaryLootTypes.Art: 1,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold {
+                XCTAssertEqual(optimalLoot[lootType]!, 0.75, accuracy: ACCURACY)
+            } else if lootType == .Art {
+                XCTAssertEqual(optimalLoot[lootType]!, 1, accuracy: ACCURACY)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
     }
     
     func testOptimalLootGold() {
@@ -144,6 +166,24 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Art || lootType == .Coke {
                 XCTAssertEqual(optimalLoot[lootType]!, 1, accuracy: ACCURACY)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+        
+        capacity = 1
+        lootCounts = [
+            SecondaryLootTypes.Gold: 2,
+            SecondaryLootTypes.Art: 4,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 2,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold {
+                XCTAssertEqual(optimalLoot[lootType]!, 1.5, accuracy: ACCURACY)
             } else {
                 XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
             }

@@ -15,7 +15,7 @@ public enum SecondaryLootTypes: String, CaseIterable {
     case Weed
     case Cash
     
-    func getLootParams() -> ((Double, Double), Double) {
+    private func getLootParams() -> ((Double, Double), Double) {
         switch self {
         case .Gold:
             return ((328584, 333192), 2 / 3)
@@ -28,6 +28,18 @@ public enum SecondaryLootTypes: String, CaseIterable {
         case .Cash:
             return ((78480, 89420), 0.25)
         }
+    }
+    
+    func getMinValue() -> Double {
+        self.getLootParams().0.0
+    }
+    
+    func getMaxValue() -> Double {
+        self.getLootParams().0.1
+    }
+    
+    func getWeight() -> Double {
+        self.getLootParams().1
     }
 }
 
