@@ -1,0 +1,7 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        paths:
+          - Optimal-Cayo-Perico-Take/

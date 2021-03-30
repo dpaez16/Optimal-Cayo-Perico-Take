@@ -23,7 +23,7 @@ PROJECT      = "Optimal-Cayo-Perico-Take.xcodeproj"
 
 SOURCE_DIR   = "Optimal-Cayo-Perico-Take"
 OUTPUT_DIR   = "./output/cobertura"
-IGNORE_DIR   = ["Optimal-Cayo-Perico-TakeTests", "Optimal-Cayo-Perico-TakeUITests", "**/*SceneDelegate*", "**/*AppDelegate*"]
+IGNORE       = ["Optimal\-Cayo\-Perico\-TakeTests/*", "Optimal\-Cayo\-Perico\-TakeUITests/*", "**/SceneDelegate.swift", "**/AppDelegate.swift"]
 
 platform :ios do
   desc "Runs unit tests and UI tests"
@@ -33,7 +33,7 @@ platform :ios do
 
   desc "Code coverage"
   lane :coverage do
-    slather(scheme: SCHEME, proj: PROJECT, source_directory: SOURCE_DIR, ignore: IGNORE_DIR, cobertura_xml: true, output_directory: OUTPUT_DIR)
+    slather(scheme: SCHEME, proj: PROJECT, source_directory: SOURCE_DIR, ignore: IGNORE, cobertura_xml: true, output_directory: OUTPUT_DIR)
   end
 
   desc "Uploads beta app to testflight"
