@@ -33,7 +33,16 @@ platform :ios do
 
   desc "Code coverage"
   lane :coverage do
-    slather(scheme: SCHEME, proj: PROJECT, source_directory: SOURCE_DIR, ignore: IGNORE, cobertura_xml: true, output_directory: OUTPUT_DIR)
+    slather(
+      build_directory: DERIVED_DATA,
+      scheme: SCHEME,
+      proj: PROJECT,
+      source_directory: SOURCE_DIR,
+      ignore: IGNORE,
+      cobertura_xml: true,
+      output_directory: OUTPUT_DIR,
+      travis: true
+    )
   end
 
   desc "Uploads beta app to testflight"
