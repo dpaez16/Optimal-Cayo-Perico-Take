@@ -63,7 +63,7 @@ class OptimalLootUtils {
     }
     
     static func getTotalWeight(lootGrabbed: [SecondaryLootTypes: Double]) -> Double {
-        return lootGrabbed.keys.reduce(0.0) { total, lootType in total + lootGrabbed[lootType]! * lootType.getWeight() }
+        return lootGrabbed.keys.reduce(0.0) { total, lootType in total + (lootGrabbed[lootType] ?? 0) * lootType.getWeight() }
     }
     
     private static func getOptimalLootHelper(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
@@ -136,6 +136,11 @@ class OptimalLootUtils {
         }
         
         return resultLoot
+    }
+    
+    static func round(num: Double, digits: Int) -> Double {
+        let p = pow(10, Double(digits))
+        return (num * p).rounded() / p
     }
     
     static func divideLoot(among numPlayers: Int, lootGrabbed: [SecondaryLootTypes: Double]) -> [[SecondaryLootTypes: Double]] {

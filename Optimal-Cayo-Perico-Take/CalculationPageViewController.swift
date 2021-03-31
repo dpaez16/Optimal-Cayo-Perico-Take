@@ -10,6 +10,7 @@ import UIKit
 
 class CalculationPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     private var numPlayers: Int!
+    private var playerLoots: [[SecondaryLootTypes: Double]]!
     private var pages = [UIViewController]()
     
     func initVC(lootQuantities: [Int], numPlayers: Int) {
@@ -22,8 +23,7 @@ class CalculationPageViewController: UIPageViewController, UIPageViewControllerD
         }
         
         let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
-        let playerLoots = OptimalLootUtils.divideLoot(among: numPlayers, lootGrabbed: optimalLoot)
-        let totalValue = OptimalLootUtils.getTotalValues(lootGrabbed: optimalLoot)
+        self.playerLoots = OptimalLootUtils.divideLoot(among: numPlayers, lootGrabbed: optimalLoot)
     }
     
     override func viewDidLoad() {
@@ -38,13 +38,23 @@ class CalculationPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     private func setUpPages() {
-        for _ in 1 ... numPlayers! {
-            let vc = storyboard?.instantiateViewController(identifier: "PlayerLootViewController")
-            pages.append(vc!)
+        for playerNum in 1 ... numPlayers! {
+            guard let vc = storyboard?.instantiateViewController(identifier: "PlayerLootViewController") as PlayerLootViewController? else {
+                return
+            }
+            
+            let idx = playerNum - 1
+            let playerLoot = self.playerLoots[idx]
+            vc.initVC(playerNum: playerNum, playerLoot: playerLoot)
+            pages.append(vc)
         }
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "LootStatsViewController")
-        pages.append(vc!)
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "LootStatsViewController") as! LootStatsViewController? else {
+            return
+        }
+        
+        vc.initVC(playerLoots: playerLoots)
+        pages.append(vc)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
