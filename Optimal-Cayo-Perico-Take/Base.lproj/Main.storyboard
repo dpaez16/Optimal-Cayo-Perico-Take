@@ -57,7 +57,7 @@
                     <toolbarItems>
                         <barButtonItem title="Calculate Optimal Loot" width="451" id="IRG-jM-LRj">
                             <connections>
-                                <segue destination="jiC-52-JcX" kind="show" identifier="calculateOptimalLootSegue" id="zik-3g-nfu"/>
+                                <segue destination="S2C-eq-Rcr" kind="show" identifier="calculateOptimalLootSegue" id="d5I-u1-i4N"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -70,21 +70,46 @@
             </objects>
             <point key="canvasLocation" x="1379" y="210"/>
         </scene>
-        <!--Calculation View Controller-->
-        <scene sceneID="WtB-MM-k4P">
+        <!--Calculation Page View Controller-->
+        <scene sceneID="KTh-N5-Uac">
             <objects>
-                <viewController id="jiC-52-JcX" customClass="CalculationViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bgd-Um-lPV">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="S2C-eq-Rcr" customClass="CalculationPageViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="f1O-z0-l8o"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wf1-FP-f5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2480" y="210"/>
+        </scene>
+        <!--Player Loot View Controller-->
+        <scene sceneID="A3m-eX-n7e">
+            <objects>
+                <viewController storyboardIdentifier="PlayerLootViewController" id="ZCj-su-Vg8" customClass="PlayerLootViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="c46-zZ-V0C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="4uj-kt-Nwy"/>
+                        <viewLayoutGuide key="safeArea" id="YwX-n4-oez"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yLp-Qn-UDx"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M8Y-Pc-JQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NiV-Z1-Cut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2322" y="218"/>
+            <point key="canvasLocation" x="2069.5652173913045" y="941.51785714285711"/>
+        </scene>
+        <!--Loot Stats View Controller-->
+        <scene sceneID="gsC-02-vjy">
+            <objects>
+                <viewController storyboardIdentifier="LootStatsViewController" id="Bjk-qG-gTi" customClass="LootStatsViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DR9-fD-cQw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nU8-Fc-C5s"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="geY-zM-USC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2887" y="942"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nT4-v2-1rP">

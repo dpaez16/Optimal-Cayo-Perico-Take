@@ -45,7 +45,7 @@ class UserInputTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "calculateOptimalLootSegue" else { return }
-        guard let vc = segue.destination as? CalculationViewController else { return }
+        guard let vc = segue.destination as? CalculationPageViewController else { return }
         
         let lootQuantities = UserInputTableViewController.lootQuantities
         let numPlayers = UserInputTableViewController.numPlayers

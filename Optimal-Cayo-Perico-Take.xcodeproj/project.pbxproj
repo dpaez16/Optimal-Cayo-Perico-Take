@@ -21,7 +21,9 @@
 		7178EEC92605287E00BAE607 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EEC62605287E00BAE607 /* Constants.swift */; };
 		7178EECB260531B600BAE607 /* UserInputTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECA260531B600BAE607 /* UserInputTableViewController.swift */; };
 		7178EECE260532A600BAE607 /* UserInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */; };
-		7178EED026055C0F00BAE607 /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECF26055C0F00BAE607 /* CalculationViewController.swift */; };
+		7178EED026055C0F00BAE607 /* CalculationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178EECF26055C0F00BAE607 /* CalculationPageViewController.swift */; };
+		71CABC562613F99C0068E27B /* PlayerLootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CABC552613F99C0068E27B /* PlayerLootViewController.swift */; };
+		71CABC582613F9AB0068E27B /* LootStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CABC572613F9AB0068E27B /* LootStatsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +61,9 @@
 		7178EEC62605287E00BAE607 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7178EECA260531B600BAE607 /* UserInputTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTableViewController.swift; sourceTree = "<group>"; };
 		7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTableViewCell.swift; sourceTree = "<group>"; };
-		7178EECF26055C0F00BAE607 /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
+		7178EECF26055C0F00BAE607 /* CalculationPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationPageViewController.swift; sourceTree = "<group>"; };
+		71CABC552613F99C0068E27B /* PlayerLootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLootViewController.swift; sourceTree = "<group>"; };
+		71CABC572613F9AB0068E27B /* LootStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootStatsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +124,9 @@
 				7178EEC32605285C00BAE607 /* OptimalLootUtils.swift */,
 				7178EECA260531B600BAE607 /* UserInputTableViewController.swift */,
 				7178EECD260532A600BAE607 /* UserInputTableViewCell.swift */,
-				7178EECF26055C0F00BAE607 /* CalculationViewController.swift */,
+				7178EECF26055C0F00BAE607 /* CalculationPageViewController.swift */,
+				71CABC552613F99C0068E27B /* PlayerLootViewController.swift */,
+				71CABC572613F9AB0068E27B /* LootStatsViewController.swift */,
 			);
 			path = "Optimal-Cayo-Perico-Take";
 			sourceTree = "<group>";
@@ -275,11 +281,13 @@
 			files = (
 				7178EEC72605287E00BAE607 /* Constants.swift in Sources */,
 				7178EECE260532A600BAE607 /* UserInputTableViewCell.swift in Sources */,
+				71CABC582613F9AB0068E27B /* LootStatsViewController.swift in Sources */,
 				7178EE942605281000BAE607 /* AppDelegate.swift in Sources */,
+				71CABC562613F99C0068E27B /* PlayerLootViewController.swift in Sources */,
 				7178EECB260531B600BAE607 /* UserInputTableViewController.swift in Sources */,
 				7178EEC42605285C00BAE607 /* OptimalLootUtils.swift in Sources */,
 				7178EE962605281000BAE607 /* SceneDelegate.swift in Sources */,
-				7178EED026055C0F00BAE607 /* CalculationViewController.swift in Sources */,
+				7178EED026055C0F00BAE607 /* CalculationPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
