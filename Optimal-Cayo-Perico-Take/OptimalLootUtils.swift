@@ -63,7 +63,7 @@ class OptimalLootUtils {
     }
     
     static func getTotalWeight(lootGrabbed: [SecondaryLootTypes: Double]) -> Double {
-        return lootGrabbed.keys.reduce(0.0) { total, lootType in total + (lootGrabbed[lootType] ?? 0) * lootType.getWeight() }
+        return lootGrabbed.keys.reduce(0.0) { total, lootType in total + lootGrabbed[lootType]! * lootType.getWeight() }
     }
     
     private static func getOptimalLootHelper(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
