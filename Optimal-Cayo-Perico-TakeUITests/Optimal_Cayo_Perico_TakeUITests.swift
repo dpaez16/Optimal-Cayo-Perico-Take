@@ -14,7 +14,7 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         continueAfterFailure = false
     }
     
-    func testExample() throws {
+    func testEntireUI() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -37,6 +37,22 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         // calculate button should still appear, as the loot types have been incremented
         XCTAssert(app.toolbars["Toolbar"].exists)
         app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
-        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationView"].buttons["Back"].tap()
+        
+        // scroll through pages
+        let elementsQuery = app.scrollViews.otherElements
+        var pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
+        
+        // scroll to Player 2
+        elementsQuery.staticTexts["Player 1:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Player 2:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 2 loot page not loaded")
+        
+        // scroll to stats page
+        elementsQuery.staticTexts["Player 2:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
+        
+        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
     }
 }
