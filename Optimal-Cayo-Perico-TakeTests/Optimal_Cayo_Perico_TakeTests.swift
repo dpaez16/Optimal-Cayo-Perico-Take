@@ -223,4 +223,18 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             XCTAssertEqual(playerLoot[.Gold]!, 1.5, accuracy: ACCURACY)
         }
     }
+    
+    func testReformatNumber() {
+        var num: Double = 1234.156
+        var numStr: String = OptimalLootUtils.reformatNumber(num: num, numberStyle: .currency)
+        XCTAssertEqual(numStr, "$1,234.16")
+        
+        num = 2 / 3
+        numStr = OptimalLootUtils.reformatNumber(num: num, numberStyle: .percent)
+        XCTAssertEqual(numStr, "66.67%")
+        
+        num = 1.0
+        numStr = OptimalLootUtils.reformatNumber(num: num, numberStyle: .decimal)
+        XCTAssertEqual(numStr, "1")
+    }
 }

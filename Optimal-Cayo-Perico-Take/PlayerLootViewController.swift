@@ -71,10 +71,10 @@ extension PlayerLootViewController: UITableViewDataSource, UITableViewDelegate  
     
     func getPlayerLootWeightCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerLootWeightCell", for: indexPath)
-        var weight = OptimalLootUtils.getTotalWeight(lootGrabbed: self.actualPlayerLoot) * 100
-        weight = OptimalLootUtils.round(num: weight, digits: 2)
+        let weight = OptimalLootUtils.getTotalWeight(lootGrabbed: self.actualPlayerLoot)
+        let weightStr = OptimalLootUtils.reformatNumber(num: weight, numberStyle: .percent)
         
-        cell.textLabel?.text = "Total Weight: \(weight)%"
+        cell.textLabel?.text = "Total Weight: \(weightStr)"
         return cell
     }
     

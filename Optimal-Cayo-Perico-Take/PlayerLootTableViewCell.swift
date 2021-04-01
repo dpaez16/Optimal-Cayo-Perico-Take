@@ -11,16 +11,12 @@ import UIKit
 class PlayerLootTableViewCell: UITableViewCell {
     @IBOutlet weak var playerLootLabel: UILabel!
     private var lootType: SecondaryLootTypes!
-    private var lootQuantity: Double!
+    private var lootQuantity: String!
     
     func initCell(lootType: SecondaryLootTypes, lootQuantity: Double) {
         self.lootType = lootType
-        self.lootQuantity = OptimalLootUtils.round(num: lootQuantity, digits: 2)
+        self.lootQuantity = OptimalLootUtils.reformatNumber(num: lootQuantity, numberStyle: .decimal)
         
-        if lootType == .Art {
-            playerLootLabel.text = "\(self.lootType!): \(Int(self.lootQuantity!))"
-        } else {
-            playerLootLabel.text = "\(self.lootType!): \(self.lootQuantity!)"
-        }
+        playerLootLabel.text = "\(self.lootType!): \(self.lootQuantity!)"
     }
 }

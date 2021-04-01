@@ -138,9 +138,13 @@ class OptimalLootUtils {
         return resultLoot
     }
     
-    static func round(num: Double, digits: Int) -> Double {
-        let p = pow(10, Double(digits))
-        return (num * p).rounded() / p
+    static func reformatNumber(num: Double, numberStyle: NumberFormatter.Style) -> String {
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = numberStyle
+        numFormatter.minimumFractionDigits = 0
+        numFormatter.maximumFractionDigits = 2
+        
+        return numFormatter.string(for: num)!
     }
     
     static func divideLoot(among numPlayers: Int, lootGrabbed: [SecondaryLootTypes: Double]) -> [[SecondaryLootTypes: Double]] {

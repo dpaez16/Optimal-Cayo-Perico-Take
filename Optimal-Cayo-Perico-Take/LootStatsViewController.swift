@@ -37,10 +37,9 @@ extension LootStatsViewController: UITableViewDataSource, UITableViewDelegate  {
     func getPlayerStatCell(indexPath: IndexPath) -> UITableViewCell {
         let idx = indexPath.row
         let playerNum = idx + 1
-        //let weight = self.weights[idx]
         let totalValues = self.values[idx]
-        let minValue = String(format: "$%.02f", totalValues.0)
-        let maxValue = String(format: "$%.02f", totalValues.1)
+        let minValue = OptimalLootUtils.reformatNumber(num: totalValues.0, numberStyle: .currency)
+        let maxValue = OptimalLootUtils.reformatNumber(num: totalValues.1, numberStyle: .currency)
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerStatsCell", for: indexPath)
@@ -51,8 +50,8 @@ extension LootStatsViewController: UITableViewDataSource, UITableViewDelegate  {
     func getTotalStatCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "totalStatsCell", for: indexPath)
         let totalValues = self.values.reduce((0.0, 0.0)) {totals, curr in (totals.0 + curr.0, totals.1 + curr.1)}
-        let minValue = String(format: "$%.02f", totalValues.0)
-        let maxValue = String(format: "$%.02f", totalValues.1)
+        let minValue = OptimalLootUtils.reformatNumber(num: totalValues.0, numberStyle: .currency)
+        let maxValue = OptimalLootUtils.reformatNumber(num: totalValues.1, numberStyle: .currency)
         
         cell.textLabel?.text = "Total: \(minValue) - \(maxValue)"
         return cell
