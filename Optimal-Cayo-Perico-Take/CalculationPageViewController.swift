@@ -58,14 +58,14 @@ class CalculationPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        let previousIndex = abs((currentIndex - 1) % pages.count)
+        guard let currentIndex = pages.firstIndex(of: viewController), currentIndex > 0 else { return nil }
+        let previousIndex = (currentIndex - 1) % pages.count
         return pages[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let currentIndex = pages.firstIndex(of: viewController) else { return nil }
-        let nextIndex = abs((currentIndex + 1) % pages.count)
+        guard let currentIndex = pages.firstIndex(of: viewController), currentIndex + 1 < pages.count else { return nil }
+        let nextIndex = (currentIndex + 1) % pages.count
         return pages[nextIndex]
     }
     
