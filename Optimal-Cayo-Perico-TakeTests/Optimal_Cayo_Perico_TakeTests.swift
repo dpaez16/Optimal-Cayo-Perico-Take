@@ -189,4 +189,52 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             }
         }
     }
+    
+    func testDivideLoot() {
+        var capacity: Double = 3
+        var lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 0,
+            SecondaryLootTypes.Art: 6,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        var playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot)
+        
+        for playerLoot in playerLoots {
+            XCTAssertEqual(playerLoot[.Art]!, 2, accuracy: ACCURACY)
+        }
+        
+        capacity = 2
+        lootCounts = [
+            SecondaryLootTypes.Gold: 3,
+            SecondaryLootTypes.Art: 0,
+            SecondaryLootTypes.Cash: 0,
+            SecondaryLootTypes.Coke: 0,
+            SecondaryLootTypes.Weed: 0
+        ]
+        
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot)
+        
+        for playerLoot in playerLoots {
+            XCTAssertEqual(playerLoot[.Gold]!, 1.5, accuracy: ACCURACY)
+        }
+    }
+    
+    func testReformatNumber() {
+        var num: Double = 1234.156
+        var numStr: String = OptimalLootUtils.reformatNumber(num: num, numberStyle: .currency)
+        XCTAssertEqual(numStr, "$1,234.16")
+        
+        num = 2 / 3
+        numStr = OptimalLootUtils.reformatNumber(num: num, numberStyle: .percent)
+        XCTAssertEqual(numStr, "66.67%")
+        
+        num = 1.0
+        numStr = OptimalLootUtils.reformatNumber(num: num, numberStyle: .decimal)
+        XCTAssertEqual(numStr, "1")
+    }
 }

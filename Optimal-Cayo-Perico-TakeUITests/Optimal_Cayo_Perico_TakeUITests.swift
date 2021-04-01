@@ -14,7 +14,7 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         continueAfterFailure = false
     }
     
-    func testExample() throws {
+    func testEntireUI() throws {
         let app = XCUIApplication()
         app.launch()
         
@@ -36,7 +36,44 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         
         // calculate button should still appear, as the loot types have been incremented
         XCTAssert(app.toolbars["Toolbar"].exists)
+        
+        // calculation screen should appear
         app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
-        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationView"].buttons["Back"].tap()
+        let elementsQuery = app.scrollViews.otherElements
+        var pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
+        
+        // try to swipe behind the first screen
+        elementsQuery.staticTexts["Player 1:"].swipeRight()
+        pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
+        
+        // scroll to Player 2
+        elementsQuery.staticTexts["Player 1:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Player 2:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 2 loot page not loaded")
+        
+        // scroll to stats page
+        elementsQuery.staticTexts["Player 2:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
+        
+        // try to swipe beyond last page
+        elementsQuery.staticTexts["Overall Stats:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
+        
+        // swipe back to initial page
+        elementsQuery.staticTexts["Overall Stats:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 2:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 1:"].swipeRight()
+        sleep(1)
+        
+        // exit app
+        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
     }
 }
