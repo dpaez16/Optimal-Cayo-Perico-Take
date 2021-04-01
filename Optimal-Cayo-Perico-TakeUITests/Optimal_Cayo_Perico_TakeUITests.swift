@@ -36,11 +36,16 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         
         // calculate button should still appear, as the loot types have been incremented
         XCTAssert(app.toolbars["Toolbar"].exists)
-        app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
         
-        // scroll through pages
+        // calculation screen should appear
+        app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
         let elementsQuery = app.scrollViews.otherElements
         var pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
+        
+        // try to swipe behind the first screen
+        elementsQuery.staticTexts["Player 1:"].swipeRight()
+        pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
         XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
         
         // scroll to Player 2
@@ -53,6 +58,22 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
         XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
         
+        // try to swipe beyond last page
+        elementsQuery.staticTexts["Overall Stats:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
+        
+        // swipe back to initial page
+        elementsQuery.staticTexts["Overall Stats:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 2:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 1:"].swipeRight()
+        sleep(1)
+        
+        // exit app
         app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
     }
 }
