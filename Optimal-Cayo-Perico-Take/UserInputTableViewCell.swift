@@ -26,16 +26,32 @@ class UserInputTableViewCell: UITableViewCell {
     
     func getProperLabelStr() -> String {
         let stepperValue: Int = getStepperQuantity()
-        return "\(stepperType.rawValue): \(stepperValue)"
+        let idx = getIdx()
+        let lootMultiplier: Int = Int(UserInputTableViewController.lootMultipliers[idx])
+        
+        var labelStr = "\(stepperType.rawValue): \(stepperValue)"
+        if lootMultiplier != 1 {
+            labelStr += " [\(lootMultiplier)x $$$]"
+        }
+        
+        return labelStr
     }
     
     func getStepperQuantity() -> Int {
         return Int(stepper.value)
     }
     
+    func getIdx() -> Int {
+        guard let idx = (SecondaryLootTypes.allCases.map { lootType in lootType.rawValue }).firstIndex(of: stepperType.rawValue) else {
+            return 0
+        }
+        
+        return idx
+    }
+    
     @IBAction func changedStepperValue(_ sender: UIStepper) {
         if stepperType != StepperTypes.Players, let navigationController = navigationController {
-            let idx = (SecondaryLootTypes.allCases.map { lootType in lootType.rawValue }).firstIndex(of: stepperType.rawValue)!
+            let idx = getIdx()
             UserInputTableViewController.lootQuantities[idx] = getStepperQuantity()
     
             // make sure at least one loot type is there to make the calculation work

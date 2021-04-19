@@ -44,9 +44,30 @@ class UserInputTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let idx = indexPath.row
         guard idx != UserInputTableViewController.lootQuantities.count else { return nil }
+        let lootMultiplier: Int = Int(UserInputTableViewController.lootMultipliers[idx])
         
-        let title = "Edit Multiplier"
+        guard lootMultiplier < 3 else { return nil }
+        
+        let title = "\(lootMultiplier + 1)x $$$"
         let doneAction = UIContextualAction(style: .normal, title: title) { (action, view, handler) in
+            UserInputTableViewController.lootMultipliers[idx] += 1
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            handler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [doneAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let idx = indexPath.row
+        guard idx != UserInputTableViewController.lootQuantities.count else { return nil }
+        
+        let lootMultiplier: Int = Int(UserInputTableViewController.lootMultipliers[idx])
+        guard lootMultiplier > 1 else { return nil }
+        
+        let title = "\(lootMultiplier - 1)x $$$"
+        let doneAction = UIContextualAction(style: .normal, title: title) { (action, view, handler) in
+            UserInputTableViewController.lootMultipliers[idx] -= 1
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             handler(true)
         }
