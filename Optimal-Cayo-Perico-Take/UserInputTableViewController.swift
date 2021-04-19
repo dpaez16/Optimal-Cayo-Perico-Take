@@ -10,6 +10,7 @@ import UIKit
 
 class UserInputTableViewController: UITableViewController {
     static var lootQuantities: [Int] = Array(repeating: 0, count: SecondaryLootTypes.allCases.count)
+    static var lootMultipliers: [Double] = Array(repeating: 1.0, count: SecondaryLootTypes.allCases.count)
     static var numPlayers: Int = 1
     
     override func viewDidLoad() {
@@ -38,6 +39,19 @@ class UserInputTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let idx = indexPath.row
+        guard idx != UserInputTableViewController.lootQuantities.count else { return nil }
+        
+        let title = "Edit Multiplier"
+        let doneAction = UIContextualAction(style: .normal, title: title) { (action, view, handler) in
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            handler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [doneAction])
     }
     
     // MARK: - Navigation
