@@ -22,6 +22,7 @@ class UserInputTableViewCell: UITableViewCell {
         stepper.stepValue = 1
         stepper.minimumValue = stepperType == StepperTypes.Players ? 1 : 0
         stepper.maximumValue = stepperType == StepperTypes.Players ? 4 : 10
+        stepper.value = getStepperQuantityAlt()
         userInputLabel.text = getProperLabelStr()
     }
     
@@ -36,6 +37,15 @@ class UserInputTableViewCell: UITableViewCell {
         }
         
         return labelStr
+    }
+    
+    func getStepperQuantityAlt() -> Double {
+        let idx = getIdx()
+        if stepperType == StepperTypes.Players {
+            return Double(UserInputTableViewController.numPlayers)
+        } else {
+            return Double(UserInputTableViewController.lootQuantities[idx])
+        }
     }
     
     func getStepperQuantity() -> Int {
