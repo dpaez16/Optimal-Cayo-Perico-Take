@@ -30,16 +30,16 @@ public enum SecondaryLootTypes: String, CaseIterable {
         }
     }
     
-    func getMinValue() -> Double {
-        self.getLootParams().0.0
+    func getMinValue(_ moneyMultipler: Double = 1.0) -> Double {
+        return self.getLootParams().0.0 * moneyMultipler
     }
     
-    func getMaxValue() -> Double {
-        self.getLootParams().0.1
+    func getMaxValue(_ moneyMultipler: Double = 1.0) -> Double {
+        return self.getLootParams().0.1 * moneyMultipler
     }
     
     func getWeight() -> Double {
-        self.getLootParams().1
+        return self.getLootParams().1
     }
 }
 

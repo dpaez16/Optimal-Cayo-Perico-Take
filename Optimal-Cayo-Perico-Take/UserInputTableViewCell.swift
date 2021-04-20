@@ -12,6 +12,7 @@ class UserInputTableViewCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var userInputLabel: UILabel!
     private var stepperType: StepperTypes!
+    private var stepperValue: Int!
     private var navigationController: UINavigationController?
     
     func initCell(stepperType: StepperTypes, navigationController: UINavigationController?) {
@@ -21,21 +22,47 @@ class UserInputTableViewCell: UITableViewCell {
         stepper.stepValue = 1
         stepper.minimumValue = stepperType == StepperTypes.Players ? 1 : 0
         stepper.maximumValue = stepperType == StepperTypes.Players ? 4 : 10
+        stepper.value = getStepperQuantityAlt()
         userInputLabel.text = getProperLabelStr()
     }
     
     func getProperLabelStr() -> String {
         let stepperValue: Int = getStepperQuantity()
-        return "\(stepperType.rawValue): \(stepperValue)"
+        let idx = getIdx()
+        let lootMultiplier: Int = Int(UserInputTableViewController.lootMultipliers[idx])
+        
+        var labelStr = "\(stepperType.rawValue): \(stepperValue)"
+        if lootMultiplier != 1 {
+            labelStr += " [\(lootMultiplier)x $$$]"
+        }
+        
+        return labelStr
+    }
+    
+    func getStepperQuantityAlt() -> Double {
+        let idx = getIdx()
+        if stepperType == StepperTypes.Players {
+            return Double(UserInputTableViewController.numPlayers)
+        } else {
+            return Double(UserInputTableViewController.lootQuantities[idx])
+        }
     }
     
     func getStepperQuantity() -> Int {
         return Int(stepper.value)
     }
     
+    func getIdx() -> Int {
+        guard let idx = (SecondaryLootTypes.allCases.map { lootType in lootType.rawValue }).firstIndex(of: stepperType.rawValue) else {
+            return 0
+        }
+        
+        return idx
+    }
+    
     @IBAction func changedStepperValue(_ sender: UIStepper) {
         if stepperType != StepperTypes.Players, let navigationController = navigationController {
-            let idx = (SecondaryLootTypes.allCases.map { lootType in lootType.rawValue }).firstIndex(of: stepperType.rawValue)!
+            let idx = getIdx()
             UserInputTableViewController.lootQuantities[idx] = getStepperQuantity()
     
             // make sure at least one loot type is there to make the calculation work

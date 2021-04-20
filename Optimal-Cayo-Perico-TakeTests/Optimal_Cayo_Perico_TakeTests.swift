@@ -11,6 +11,13 @@ import XCTest
 
 class Optimal_Cayo_Perico_TakeTests: XCTestCase {
     private let ACCURACY = 0.00001
+    private var EMPTY_MULTIPLIERS: [SecondaryLootTypes: Double] = [:]
+    
+    override func setUp() {
+        for lootType in SecondaryLootTypes.allCases {
+            EMPTY_MULTIPLIERS[lootType] = 1.0
+        }
+    }
     
     func testWeightMethods() {
         let capacity: Double = 2
@@ -22,7 +29,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         let weightsObtained = OptimalLootUtils.getWeightsObtained(lootGrabbed: optimalLoot)
         let totalWeightObtained = OptimalLootUtils.getTotalWeight(lootGrabbed: optimalLoot)
         
@@ -41,9 +48,9 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
-        let valuesObtained = OptimalLootUtils.getValuesObtained(lootGrabbed: optimalLoot)
-        let totalValuesObtained = OptimalLootUtils.getTotalValues(lootGrabbed: optimalLoot)
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
+        let valuesObtained = OptimalLootUtils.getValuesObtained(lootGrabbed: optimalLoot, lootMultipliers: EMPTY_MULTIPLIERS)
+        let totalValuesObtained = OptimalLootUtils.getTotalValues(lootGrabbed: optimalLoot, lootMultipliers: EMPTY_MULTIPLIERS)
         let actualTotalValues = (3 * SecondaryLootTypes.Gold.getMinValue(), 3 * SecondaryLootTypes.Gold.getMaxValue())
         
         XCTAssertEqual(optimalLoot[SecondaryLootTypes.Gold]!, 3)
@@ -63,7 +70,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold {
                 XCTAssertEqual(optimalLoot[lootType]!, 0.75, accuracy: ACCURACY)
@@ -85,7 +92,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 1
         ]
         
-        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold {
                 XCTAssertTrue(optimalLoot[lootType]! > 0)
@@ -103,7 +110,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 1
         ]
         
-        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold {
@@ -124,7 +131,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 1
         ]
         
-        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold || lootType == .Coke {
                 XCTAssertTrue(optimalLoot[lootType]! > 0)
@@ -144,7 +151,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 1
         ]
         
-        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold || lootType == .Weed {
                 XCTAssertTrue(optimalLoot[lootType]! > 0)
@@ -162,7 +169,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Art || lootType == .Coke {
                 XCTAssertEqual(optimalLoot[lootType]!, 1, accuracy: ACCURACY)
@@ -180,7 +187,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold {
                 XCTAssertEqual(optimalLoot[lootType]!, 1.5, accuracy: ACCURACY)
@@ -200,8 +207,8 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
-        var playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot)
+        var optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
+        var playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot, lootMultipliers: EMPTY_MULTIPLIERS)
         
         for playerLoot in playerLoots {
             XCTAssertEqual(playerLoot[.Art]!, 2, accuracy: ACCURACY)
@@ -216,8 +223,8 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             SecondaryLootTypes.Weed: 0
         ]
         
-        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
-        playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot)
+        optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: EMPTY_MULTIPLIERS)
+        playerLoots = OptimalLootUtils.divideLoot(among: Int(capacity), lootGrabbed: optimalLoot, lootMultipliers: EMPTY_MULTIPLIERS)
         
         for playerLoot in playerLoots {
             XCTAssertEqual(playerLoot[.Gold]!, 1.5, accuracy: ACCURACY)
@@ -236,5 +243,40 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
         num = 1.0
         numStr = OptimalLootUtils.reformatNumber(num: num, numberStyle: .decimal)
         XCTAssertEqual(numStr, "1")
+    }
+    
+    func testMultipliers() {
+        let capacity: Double = 1
+        let lootCounts: [SecondaryLootTypes: Double] = [
+            SecondaryLootTypes.Gold: 2,
+            SecondaryLootTypes.Art: 0,
+            SecondaryLootTypes.Coke: 2,
+            SecondaryLootTypes.Weed: 2,
+            SecondaryLootTypes.Cash: 0
+        ]
+        
+        // 4/20 special
+        let lootMulitpliers: [SecondaryLootTypes: Double] = [
+            .Gold: 1,
+            .Art: 1,
+            .Coke: 1,
+            .Weed: 2,
+            .Cash: 1
+        ]
+        
+        // gold + weed should be grabbed only
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: lootMulitpliers)
+        for lootType in SecondaryLootTypes.allCases {
+            if lootType == .Gold {
+                XCTAssertTrue(optimalLoot[lootType]! > 0)
+            } else if lootType == .Weed {
+                XCTAssertEqual(optimalLoot[lootType]!, lootCounts[.Weed]!, accuracy: ACCURACY)
+            } else {
+                XCTAssertEqual(optimalLoot[lootType]!, 0, accuracy: ACCURACY)
+            }
+        }
+        
+        // weed is more important than gold due to weed multiplier
+        XCTAssertTrue(optimalLoot[.Weed]! > optimalLoot[.Gold]!)
     }
 }

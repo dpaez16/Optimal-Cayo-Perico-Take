@@ -19,9 +19,9 @@ class LootStatsViewController: UIViewController {
         self.tableView.reloadData()
     }
     
-    func initVC(playerLoots: [[SecondaryLootTypes: Double]]) {
+    func initVC(playerLoots: [[SecondaryLootTypes: Double]], lootMultipliers: [SecondaryLootTypes: Double]) {
         self.weights = playerLoots.map { lootGrabbed in OptimalLootUtils.getTotalWeight(lootGrabbed: lootGrabbed) }
-        self.values = playerLoots.map { lootGrabbed in OptimalLootUtils.getTotalValues(lootGrabbed: lootGrabbed) }
+        self.values = playerLoots.map { lootGrabbed in OptimalLootUtils.getTotalValues(lootGrabbed: lootGrabbed, lootMultipliers: lootMultipliers) }
     }
 }
 
