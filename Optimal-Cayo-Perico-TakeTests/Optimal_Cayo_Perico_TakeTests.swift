@@ -264,7 +264,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             .Cash: 1
         ]
         
-        // weed is more important than gold due to weed multiplier
+        // gold + weed should be grabbed only
         let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: lootMulitpliers)
         for lootType in SecondaryLootTypes.allCases {
             if lootType == .Gold {
@@ -276,6 +276,7 @@ class Optimal_Cayo_Perico_TakeTests: XCTestCase {
             }
         }
         
+        // weed is more important than gold due to weed multiplier
         XCTAssertTrue(optimalLoot[.Weed]! > optimalLoot[.Gold]!)
     }
 }
