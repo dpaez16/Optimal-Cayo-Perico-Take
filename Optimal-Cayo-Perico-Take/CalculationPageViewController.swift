@@ -11,19 +11,22 @@ import UIKit
 class CalculationPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     private var numPlayers: Int!
     private var playerLoots: [[SecondaryLootTypes: Double]]!
+    private var lootMultipliers: [SecondaryLootTypes: Double] = [:]
     private var pages = [UIViewController]()
     
-    func initVC(lootQuantities: [Int], numPlayers: Int) {
+    func initVC(lootQuantities: [Int], lootMultipliers: [Double], numPlayers: Int) {
         self.numPlayers = numPlayers
         
         let capacity = Double(numPlayers)
         var lootCounts: [SecondaryLootTypes: Double] = [:]
+        
         for (idx, lootType) in SecondaryLootTypes.allCases.enumerated() {
             lootCounts[lootType] = Double(lootQuantities[idx])
+            self.lootMultipliers[lootType] = lootMultipliers[idx]
         }
         
-        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts)
-        self.playerLoots = OptimalLootUtils.divideLoot(among: numPlayers, lootGrabbed: optimalLoot)
+        let optimalLoot = OptimalLootUtils.getOptimalLoot(capacity: capacity, lootCounts: lootCounts, lootMultipliers: self.lootMultipliers)
+        self.playerLoots = OptimalLootUtils.divideLoot(among: numPlayers, lootGrabbed: optimalLoot, lootMultipliers: self.lootMultipliers)
     }
     
     override func viewDidLoad() {
@@ -53,7 +56,7 @@ class CalculationPageViewController: UIPageViewController, UIPageViewControllerD
             return
         }
         
-        vc.initVC(playerLoots: playerLoots)
+        vc.initVC(playerLoots: playerLoots, lootMultipliers: self.lootMultipliers)
         pages.append(vc)
     }
     

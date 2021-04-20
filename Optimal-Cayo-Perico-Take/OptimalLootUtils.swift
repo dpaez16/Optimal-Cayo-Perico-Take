@@ -32,22 +32,22 @@ class OptimalLootUtils {
         return itemsUsed
     }
     
-    static func getValuesObtained(lootGrabbed: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: (Double, Double)] {
+    static func getValuesObtained(lootGrabbed: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: (Double, Double)] {
         var valuesObtained: [SecondaryLootTypes: (Double, Double)] = [:]
         
         for lootType in lootGrabbed.keys {
-            let lowerBound = lootType.getMinValue()
-            let upperBound = lootType.getMaxValue()
+            let lowerBound = lootType.getMinValue(lootMultipliers[lootType]!)
+            let upperBound = lootType.getMaxValue(lootMultipliers[lootType]!)
             valuesObtained[lootType] = (lootGrabbed[lootType]! * lowerBound, lootGrabbed[lootType]! * upperBound)
         }
         
         return valuesObtained
     }
     
-    static func getTotalValues(lootGrabbed: [SecondaryLootTypes: Double]) -> (Double, Double) {
+    static func getTotalValues(lootGrabbed: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> (Double, Double) {
         return lootGrabbed.keys.reduce((0.0, 0.0)) { totals, lootType in
-            let lowerBound = lootType.getMinValue()
-            let upperBound = lootType.getMaxValue()
+            let lowerBound = lootType.getMinValue(lootMultipliers[lootType]!)
+            let upperBound = lootType.getMaxValue(lootMultipliers[lootType]!)
             return (totals.0 + lootGrabbed[lootType]! * lowerBound, totals.1 + lootGrabbed[lootType]! * upperBound)
         }
     }
@@ -66,12 +66,12 @@ class OptimalLootUtils {
         return lootGrabbed.keys.reduce(0.0) { total, lootType in total + lootGrabbed[lootType]! * lootType.getWeight() }
     }
     
-    private static func getOptimalLootHelper(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
+    private static func getOptimalLootHelper(capacity: Double, lootCounts: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
         let missingLootTypes = SecondaryLootTypes.allCases.filter { lootType in lootCounts[lootType] == 0 }
         let presentLootTypes = SecondaryLootTypes.allCases.filter { lootType in lootCounts[lootType] != 0 }
         
         let weights = presentLootTypes.map { lootType in lootType.getWeight() * (lootCounts[lootType]!) }
-        let values = presentLootTypes.map { lootType in lootType.getMaxValue() * (lootCounts[lootType]!) }
+        let values = presentLootTypes.map { lootType in lootType.getMaxValue(lootMultipliers[lootType]!) * (lootCounts[lootType]!) }
         
         let itemsUsed = fractionalKnapsack(capacity: capacity, weights: weights, values: values)
         
@@ -87,10 +87,10 @@ class OptimalLootUtils {
         return optimalLoot
     }
     
-    private static func getOptimalNumArtItems(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> Double {
+    private static func getOptimalNumArtItems(capacity: Double, lootCounts: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> Double {
         let maxNumArtItems = Int(lootCounts[.Art]!)
         let artWeight = SecondaryLootTypes.Art.getWeight()
-        let artValues = (SecondaryLootTypes.Art.getMinValue(), SecondaryLootTypes.Art.getMaxValue())
+        let artValues = (SecondaryLootTypes.Art.getMinValue(lootMultipliers[.Art]!), SecondaryLootTypes.Art.getMaxValue(lootMultipliers[.Art]!))
         var choices: [(Double, Double)] = []
         var lootCountsCopy = lootCounts
         lootCountsCopy[.Art] = 0
@@ -102,8 +102,8 @@ class OptimalLootUtils {
                 continue
             }
             
-            let optimalLoot = getOptimalLootHelper(capacity: alteredCapacity, lootCounts: lootCountsCopy)
-            var totalValues = getTotalValues(lootGrabbed: optimalLoot)
+            let optimalLoot = getOptimalLootHelper(capacity: alteredCapacity, lootCounts: lootCountsCopy, lootMultipliers: lootMultipliers)
+            var totalValues = getTotalValues(lootGrabbed: optimalLoot, lootMultipliers: lootMultipliers)
             totalValues = (totalValues.0 + artValues.0 * numArtItemsDbl, totalValues.1 + artValues.1 * numArtItemsDbl)
             
             choices.append(totalValues)
@@ -116,14 +116,14 @@ class OptimalLootUtils {
         return numArtItemsDbl
     }
     
-    static func getOptimalLoot(capacity: Double, lootCounts: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
-        let numArtItems = getOptimalNumArtItems(capacity: capacity, lootCounts: lootCounts)
+    static func getOptimalLoot(capacity: Double, lootCounts: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> [SecondaryLootTypes: Double] {
+        let numArtItems = getOptimalNumArtItems(capacity: capacity, lootCounts: lootCounts, lootMultipliers: lootMultipliers)
         let artWeight = SecondaryLootTypes.Art.getWeight()
         var lootCountsCopy = lootCounts
         lootCountsCopy[.Art] = 0
         
         let alteredCapacity = capacity - artWeight * numArtItems
-        var optimalLoot = getOptimalLootHelper(capacity: alteredCapacity, lootCounts: lootCountsCopy)
+        var optimalLoot = getOptimalLootHelper(capacity: alteredCapacity, lootCounts: lootCountsCopy, lootMultipliers: lootMultipliers)
         optimalLoot[.Art] = numArtItems
         
         return optimalLoot
@@ -147,12 +147,12 @@ class OptimalLootUtils {
         return numFormatter.string(for: num)!
     }
     
-    static func divideLoot(among numPlayers: Int, lootGrabbed: [SecondaryLootTypes: Double]) -> [[SecondaryLootTypes: Double]] {
+    static func divideLoot(among numPlayers: Int, lootGrabbed: [SecondaryLootTypes: Double], lootMultipliers: [SecondaryLootTypes: Double]) -> [[SecondaryLootTypes: Double]] {
         var playerLoots: [[SecondaryLootTypes: Double]] = []
         var lootGrabbedCopy = lootGrabbed
         
         for _ in 1 ... numPlayers {
-            let playerLoot = getOptimalLoot(capacity: 1, lootCounts: lootGrabbedCopy)
+            let playerLoot = getOptimalLoot(capacity: 1, lootCounts: lootGrabbedCopy, lootMultipliers: lootMultipliers)
             lootGrabbedCopy = subtractLoot(leftLoot: lootGrabbedCopy, rightLoot: playerLoot)
             playerLoots.append(playerLoot)
         }

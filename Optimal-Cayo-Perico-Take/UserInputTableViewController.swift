@@ -83,9 +83,10 @@ class UserInputTableViewController: UITableViewController {
         guard let vc = segue.destination as? CalculationPageViewController else { return }
         
         let lootQuantities = UserInputTableViewController.lootQuantities
+        let lootMultipliers = UserInputTableViewController.lootMultipliers
         let numPlayers = UserInputTableViewController.numPlayers
         
-        vc.initVC(lootQuantities: lootQuantities, numPlayers: numPlayers)
+        vc.initVC(lootQuantities: lootQuantities, lootMultipliers: lootMultipliers, numPlayers: numPlayers)
     }
 
 }

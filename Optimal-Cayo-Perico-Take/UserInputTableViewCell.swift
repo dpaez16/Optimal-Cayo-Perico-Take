@@ -12,6 +12,7 @@ class UserInputTableViewCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var userInputLabel: UILabel!
     private var stepperType: StepperTypes!
+    private var stepperValue: Int!
     private var navigationController: UINavigationController?
     
     func initCell(stepperType: StepperTypes, navigationController: UINavigationController?) {
