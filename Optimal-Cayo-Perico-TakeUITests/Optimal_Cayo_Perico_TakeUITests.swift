@@ -76,4 +76,80 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         // exit app
         app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
     }
+    
+    func testEntireUIMultipliers() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let tablesQuery = XCUIApplication().tables
+        
+        // make sure gold is initially set to 0 with 1x multiplier
+        var labelLoadedProperly = tablesQuery.cells.containing(.staticText, identifier: "Gold: 0").count == 1
+        XCTAssertTrue(labelLoadedProperly, "Loot Item is not initially 0")
+        
+        labelLoadedProperly = tablesQuery.cells.containing(.staticText, identifier: "Gold: 0 [2x $$$]").count == 0
+        XCTAssertTrue(labelLoadedProperly, "Multiplier is not set to 1x")
+        
+        // tap gold
+        tablesQuery.cells.containing(.staticText, identifier: "Gold: 0").buttons["Increment"].tap()
+        sleep(1)
+        
+        // make gold multiplier 2x
+        tablesQuery.cells.containing(.staticText, identifier: "Gold: 1").element.swipeRight()
+        var button = tablesQuery.buttons["2x $$$"]
+        button.tap()
+        sleep(1)
+        
+        labelLoadedProperly = tablesQuery.cells.containing(.staticText, identifier: "Gold: 1 [2x $$$]").count == 1
+        XCTAssertTrue(labelLoadedProperly, "Multiplier is not set to 2x")
+        
+        // try to make art multiplier below 1x
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0").element.swipeLeft()
+        XCTAssertFalse(tablesQuery.buttons["0x $$$"].waitForExistence(timeout: 1.0), "Multiplier should be capped at 1x")
+        XCTAssertFalse(tablesQuery.buttons["1x $$$"].waitForExistence(timeout: 1.0), "Multiplier should be capped at 1x")
+        
+        // make art multiplier 2x
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0").element.swipeRight()
+        button = tablesQuery.buttons["2x $$$"]
+        button.tap()
+        sleep(1)
+        
+        // make art multiplier 3x
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0 [2x $$$]").element.swipeRight()
+        button = tablesQuery.buttons["3x $$$"]
+        button.tap()
+        sleep(1)
+        
+        // try to make art multiplier beyond 3x
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0 [3x $$$]").element.swipeRight()
+        XCTAssertFalse(tablesQuery.buttons["4x $$$"].waitForExistence(timeout: 1.0), "Multiplier should be capped at 3x")
+        
+        // make art multiplier 2x
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0 [3x $$$]").element.swipeLeft()
+        button = tablesQuery.buttons["2x $$$"]
+        button.tap()
+        sleep(1)
+        
+        // increment art
+        tablesQuery.cells.containing(.staticText, identifier: "Art: 0 [2x $$$]").buttons["Increment"].tap()
+        sleep(1)
+        XCTAssertTrue(tablesQuery.cells.containing(.staticText, identifier: "Art: 1 [2x $$$]").count == 1, "Art not set properly")
+        
+        // try to swipe right on player row
+        tablesQuery.cells.containing(.staticText, identifier: "Players: 1").element.swipeLeft()
+        XCTAssertFalse(tablesQuery.buttons["0x $$$"].waitForExistence(timeout: 1.0), "Players row should not have left swipe actions")
+        XCTAssertFalse(tablesQuery.buttons["1x $$$"].waitForExistence(timeout: 1.0), "Players row should not have left swipe actions")
+        
+        // try to swipe right on player row
+        tablesQuery.cells.containing(.staticText, identifier: "Players: 1").element.swipeRight()
+        XCTAssertFalse(tablesQuery.buttons["3x $$$"].waitForExistence(timeout: 1.0), "Players row should not have right swipe actions")
+        XCTAssertFalse(tablesQuery.buttons["4x $$$"].waitForExistence(timeout: 1.0), "Players row should not have right swipe actions")
+        
+        // tap calculate button
+        app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
+        sleep(1)
+        
+        // exit app
+        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
+    }
 }
