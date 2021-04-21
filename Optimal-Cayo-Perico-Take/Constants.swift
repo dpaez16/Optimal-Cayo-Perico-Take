@@ -8,6 +8,11 @@
 
 import Foundation
 
+let MIN_PLAYERS: Double = 1
+let MAX_PLAYERS: Double = 4
+let MIN_LOOT_COUNT: Double = 0
+let MAX_LOOT_COUNT: Double = 15
+
 public enum SecondaryLootTypes: String, CaseIterable {
     case Gold
     case Art
