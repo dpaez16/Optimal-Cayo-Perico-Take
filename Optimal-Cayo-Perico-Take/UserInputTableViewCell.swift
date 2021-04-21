@@ -20,8 +20,8 @@ class UserInputTableViewCell: UITableViewCell {
         self.navigationController = navigationController
         stepper.isContinuous = false
         stepper.stepValue = 1
-        stepper.minimumValue = stepperType == StepperTypes.Players ? 1 : 0
-        stepper.maximumValue = stepperType == StepperTypes.Players ? 4 : 10
+        stepper.minimumValue = stepperType == StepperTypes.Players ? MIN_PLAYERS : MIN_LOOT_COUNT
+        stepper.maximumValue = stepperType == StepperTypes.Players ? MAX_PLAYERS : MAX_LOOT_COUNT
         stepper.value = getStepperQuantityAlt()
         userInputLabel.text = getProperLabelStr()
     }
