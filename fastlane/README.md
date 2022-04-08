@@ -31,6 +31,11 @@ Code coverage
 fastlane ios beta
 ```
 Uploads beta app to testflight
+### ios build_ipa_file
+```
+fastlane ios build_ipa_file
+```
+Make IPA file
 
 ----
 
