@@ -67,7 +67,7 @@
         <scene sceneID="KTh-N5-Uac">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="S2C-eq-Rcr" customClass="CalculationPageViewController" customModule="Optimal_Cayo_Perico_Take" customModuleProvider="target" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="f1O-z0-l8o"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wf1-FP-f5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
