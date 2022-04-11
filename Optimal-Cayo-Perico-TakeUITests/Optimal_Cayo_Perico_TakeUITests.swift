@@ -19,6 +19,89 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         return tablesQuery.cells.containing(.staticText, identifier: "\t\(identifier)")
     }
     
+    func testUIMoreLootMaxPlayers() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Calculate button should not appear when the app starts
+        let tablesQuery = XCUIApplication().tables
+        XCTAssertFalse(app.toolbars["Toolbar"].exists)
+        
+        for originalQuantity in 1 ... 3 {
+            let idString = "\(StepperTypes.Players.rawValue): \(originalQuantity)"
+            
+            findText(from: tablesQuery, identifier: idString).buttons["Increment"].tap()
+            XCTAssert(findText(from: tablesQuery, identifier: idString).count == 0)
+            
+            // the calculate button should not appear at this point
+            XCTAssertFalse(app.toolbars["Toolbar"].exists)
+        }
+        
+        for stepperType in StepperTypes.allCases {
+            if stepperType == .Players || stepperType == .Gold {
+                continue
+            }
+            
+            for originalQuantity in 0 ... 2 {
+                let idString = "\(stepperType.rawValue): \(originalQuantity)"
+                
+                findText(from: tablesQuery, identifier: idString).buttons["Increment"].tap()
+                XCTAssert(findText(from: tablesQuery, identifier: idString).count == 0)
+                
+                // if any loot type is > 1, the calculate button should appear
+                XCTAssert(app.toolbars["Toolbar"].exists)
+            }
+        }
+        
+        // calculate button should still appear, as the loot types have been incremented
+        XCTAssert(app.toolbars["Toolbar"].exists)
+        
+        // calculation screen should appear
+        app.toolbars["Toolbar"].buttons["Calculate Optimal Loot"].tap()
+        let elementsQuery = app.scrollViews.otherElements
+        var pageLoaded = elementsQuery.staticTexts["Player 1:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 1 loot page not loaded")
+        
+        // scroll to Player 2
+        elementsQuery.staticTexts["Player 1:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Player 2:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 2 loot page not loaded")
+        
+        // scroll to Player 3
+        elementsQuery.staticTexts["Player 2:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Player 3:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 3 loot page not loaded")
+        
+        // scroll to Player 4
+        elementsQuery.staticTexts["Player 3:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Player 4:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Player 4 loot page not loaded")
+        
+        // scroll to stats page
+        elementsQuery.staticTexts["Player 4:"].swipeLeft()
+        pageLoaded = elementsQuery.staticTexts["Overall Stats:"].waitForExistence(timeout: 1.0)
+        XCTAssertTrue(pageLoaded, "Overall Stats page not loaded")
+        
+        // swipe back to initial page
+        elementsQuery.staticTexts["Overall Stats:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 4:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 3:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 2:"].swipeRight()
+        sleep(1)
+        
+        elementsQuery.staticTexts["Player 1:"].swipeRight()
+        sleep(1)
+        
+        // exit app
+        app.navigationBars["Optimal_Cayo_Perico_Take.CalculationPageView"].buttons["Back"].tap()
+    }
+    
     func testEntireUI() throws {
         let app = XCUIApplication()
         app.launch()
@@ -30,10 +113,10 @@ class Optimal_Cayo_Perico_TakeUITests: XCTestCase {
         for stepperType in StepperTypes.allCases {
             // trying to increment each stepper by 1
             let originalQuantity = stepperType == StepperTypes.Players ? 1 : 0
-            let idString = "\t\(stepperType.rawValue): \(originalQuantity)"
+            let idString = "\(stepperType.rawValue): \(originalQuantity)"
             
-            tablesQuery.cells.containing(.staticText, identifier: idString).buttons["Increment"].tap()
-            XCTAssert(tablesQuery.cells.containing(.staticText, identifier: idString).count == 0)
+            findText(from: tablesQuery, identifier: idString).buttons["Increment"].tap()
+            XCTAssert(findText(from: tablesQuery, identifier: idString).count == 0)
             
             // if any loot type is > 1, the calculate button should appear
             XCTAssert(app.toolbars["Toolbar"].exists)
