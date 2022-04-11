@@ -9,14 +9,14 @@
 import UIKit
 
 class PlayerLootTableViewCell: UITableViewCell {
-    @IBOutlet weak var playerLootLabel: UILabel!
     private var lootType: SecondaryLootTypes!
     private var lootQuantity: String!
     
     func initCell(lootType: SecondaryLootTypes, lootQuantity: Double) {
         self.lootType = lootType
         self.lootQuantity = OptimalLootUtils.reformatNumber(num: lootQuantity, numberStyle: .decimal)
-        
-        playerLootLabel.text = "\(self.lootType!): \(self.lootQuantity!)"
+        self.imageView?.image = UIImage(named: self.lootType.rawValue)
+        let lootNoun = self.lootType != .Art ? "piles" : (self.lootQuantity != "1" ? "paintings" : "painting")
+        self.textLabel?.text = "\(self.lootType!): \(self.lootQuantity!) \(lootNoun)"
     }
 }

@@ -467,8 +467,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T72TD2GA49;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Intuit Inc.(Ent)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = F6DWWXWEX6;
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-Take/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -476,6 +477,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-Take";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = EnterpriseInHouse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -485,8 +487,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T72TD2GA49;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Intuit Inc.(Ent)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = F6DWWXWEX6;
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-Take/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -494,6 +497,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-Take";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = EnterpriseInHouse;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -543,8 +547,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T72TD2GA49;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -553,6 +557,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Optimal-Cayo-Perico-Take";
@@ -563,8 +569,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T72TD2GA49;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Optimal-Cayo-Perico-TakeUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -573,6 +579,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpaez.Optimal-Cayo-Perico-TakeUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Optimal-Cayo-Perico-Take";

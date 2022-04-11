@@ -10,7 +10,7 @@ import UIKit
 
 class UserInputTableViewCell: UITableViewCell {
     @IBOutlet weak var stepper: UIStepper!
-    @IBOutlet weak var userInputLabel: UILabel!
+    //@IBOutlet weak var userInputLabel: UILabel!
     private var stepperType: StepperTypes!
     private var stepperValue: Int!
     private var navigationController: UINavigationController?
@@ -23,20 +23,21 @@ class UserInputTableViewCell: UITableViewCell {
         stepper.minimumValue = stepperType == StepperTypes.Players ? MIN_PLAYERS : MIN_LOOT_COUNT
         stepper.maximumValue = stepperType == StepperTypes.Players ? MAX_PLAYERS : MAX_LOOT_COUNT
         stepper.value = getStepperQuantityAlt()
-        userInputLabel.text = getProperLabelStr()
+        self.imageView?.image = UIImage(named: stepperType.rawValue)
+        self.textLabel?.text = getProperLabelStr()
     }
     
     func getProperLabelStr() -> String {
         let stepperValue: Int = getStepperQuantity()
         let idx = getIdx()
-        let lootMultiplier: Int = Int(UserInputTableViewController.lootMultipliers[idx])
+        let lootMultiplier: Int = stepperType != .Players ? Int(UserInputTableViewController.lootMultipliers[idx]) : 1
         
         var labelStr = "\(stepperType.rawValue): \(stepperValue)"
         if lootMultiplier != 1 {
             labelStr += " [\(lootMultiplier)x $$$]"
         }
         
-        return labelStr
+        return "\t\(labelStr)"
     }
     
     func getStepperQuantityAlt() -> Double {
@@ -71,7 +72,7 @@ class UserInputTableViewCell: UITableViewCell {
             UserInputTableViewController.numPlayers = getStepperQuantity()
         }
         
-        userInputLabel.text = getProperLabelStr()
+        self.textLabel?.text = getProperLabelStr()
     }
     
 }
