@@ -37,7 +37,7 @@ class CalculationPageViewController: UIPageViewController, UIPageViewControllerD
         
         setUpPages()
         setViewControllers([pages[0]], direction: .forward, animated: true, completion: nil)
-        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     private func setUpPages() {

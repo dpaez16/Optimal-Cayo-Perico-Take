@@ -50,4 +50,16 @@ platform :ios do
     build_app(scheme: SCHEME)
     upload_to_testflight
   end
+
+  desc "Make IPA file"
+  lane :build_ipa_file do
+    build_app(
+      project: PROJECT,
+      configuration: "Release",
+      export_method: "enterprise",
+      scheme: SCHEME,
+      output_name: SCHEME + ".ipa",
+      destination: "generic/platform=iOS"
+    )
+  end
 end

@@ -43,7 +43,12 @@ extension LootStatsViewController: UITableViewDataSource, UITableViewDelegate  {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerStatsCell", for: indexPath)
-        cell.textLabel?.text = "Player \(playerNum): \(minValue) - \(maxValue)"
+        if minValue == "$0" && maxValue == "$0" {
+            cell.textLabel?.text = "Player \(playerNum): \t\(minValue)"
+        } else {
+            cell.textLabel?.text = "Player \(playerNum): \t\(minValue) - \(maxValue)"
+        }
+        
         return cell
     }
     
@@ -53,7 +58,7 @@ extension LootStatsViewController: UITableViewDataSource, UITableViewDelegate  {
         let minValue = OptimalLootUtils.reformatNumber(num: totalValues.0, numberStyle: .currency)
         let maxValue = OptimalLootUtils.reformatNumber(num: totalValues.1, numberStyle: .currency)
         
-        cell.textLabel?.text = "Total: \(minValue) - \(maxValue)"
+        cell.textLabel?.text = "Total: \t\t\(minValue) - \(maxValue)"
         return cell
     }
     

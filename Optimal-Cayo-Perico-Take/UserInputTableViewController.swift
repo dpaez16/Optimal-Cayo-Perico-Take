@@ -54,6 +54,7 @@ class UserInputTableViewController: UITableViewController {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             handler(true)
         }
+        doneAction.backgroundColor = .systemGreen
         
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
@@ -71,6 +72,7 @@ class UserInputTableViewController: UITableViewController {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             handler(true)
         }
+        doneAction.backgroundColor = .systemRed
         
         return UISwipeActionsConfiguration(actions: [doneAction])
     }
